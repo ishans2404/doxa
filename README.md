@@ -50,4 +50,4 @@ We welcome contributions! Please see our contributing guidelines.
 
 ## 📄 License
 
-MIT License - see LICENSE file for details.
+[MIT License](https://github.com/ishans2404/doxa/blob/main/LICENSE)

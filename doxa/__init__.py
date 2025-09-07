@@ -13,27 +13,27 @@ __author__ = "Ishan Singh"
 
 # Core imports
 from .core.tensor import Tensor
-from .core.device_manager import DeviceManager
+from .backend.device_manager import DeviceManager
 from .core import utils
 from .utils import metrics
 
 # Key Classes available at the package level
 __all__ = [
-    "Tensor",
+    "Tensor", 
     "DeviceManager",
-    "utils",
-    "__version__",
     "metrics",
+    "cuda_available", 
+    "get_device_manager",
+    "__version__",
 ]
 
 # Initialize global device manager
-_device_manager = DeviceManager()
+_device_manager = None
 
 def get_device_manager():
     """Get the global device manager instance."""
     global _device_manager
     if _device_manager is None:
-        from .backend.device_manager import DeviceManager
         _device_manager = DeviceManager()
     return _device_manager
 
@@ -44,4 +44,7 @@ def tensor(data, dtype=None, device='auto'):
 
 def cuda_available():
     """Check if CUDA is available."""
-    return get_device_manager().gpu_available()
+    return get_device_manager().gpu_available
+
+# Initialize the global device manager on import
+_device_manager = DeviceManager()

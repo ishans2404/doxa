@@ -13,8 +13,9 @@ __author__ = "Ishan Singh"
 
 # Core imports
 from .core.tensor import Tensor
-from .core .device_manager import DeviceManager
+from .core.device_manager import DeviceManager
 from .core import utils
+from .utils import metrics
 
 # Key Classes available at the package level
 __all__ = [
@@ -22,6 +23,7 @@ __all__ = [
     "DeviceManager",
     "utils",
     "__version__",
+    "metrics",
 ]
 
 # Initialize global device manager

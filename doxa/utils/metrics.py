@@ -1,7 +1,6 @@
 """Basic metrics for evaluating model."""
 
 import numpy as np
-from typing import Union
 
 def mean_squuared_error(y_true, y_pred):
     """Calculate mean squared error between true and predicted values."""

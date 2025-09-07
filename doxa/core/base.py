@@ -78,8 +78,19 @@ class Regressor(Algorithm):
         return r2_score(y, y_pred)
     
 
+
 class Classifier(Algorithm):
     """Base Class for classification algorithms in Doxa."""
+
+    def score(self,  X, y):
+        """Return the mean accuracy on the given test data and labels."""
+        from ..utils.metrics import accuracy_score
+        y_pred = self.predict(X)
+        return accuracy_score(y, y_pred)
+
+
+class Clusterer(Algorithm):
+    """Base Class for clustering algorithms in Doxa."""
 
     def fit_predict(self, X, y=None):
         """Fit the model and return cluster labels."""

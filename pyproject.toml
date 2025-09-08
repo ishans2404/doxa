@@ -40,6 +40,8 @@ gpu = ["cupy-cuda12x>=9.0.0"]
 dev = [
     "pytest>=6.0",
     "pytest-cov",
+    "pytest-mock",
+    "pytest-benchmark",
     "black",
     "flake8",
     "mypy",
@@ -49,6 +51,7 @@ docs = [
     "sphinx>=4.0",
     "sphinx-rtd-theme",
     "myst-parser",
+    "sphinx-autodoc-typehints",
 ]
 all = ["doxa[gpu,dev,docs]"]
 

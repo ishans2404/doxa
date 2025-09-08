@@ -12,7 +12,7 @@ __version__ = "0.0.1"
 __author__ = "Ishan Singh"
 
 # Core imports
-from .core.tensor import Tensor
+from .core.tensor import Tensor, ones, randn, zeros
 from .backend.device_manager import DeviceManager
 from .utils import metrics
 
@@ -24,6 +24,9 @@ __all__ = [
     "cuda_available", 
     "get_device_manager",
     "__version__",
+    'randn',
+    'zeros',
+    'ones',
 ]
 
 # Initialize global device manager

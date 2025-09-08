@@ -42,7 +42,7 @@ def gpu_available():
     except:
         return False
     
-def pytest_configuration(config):
+def pytest_configure(config):
     """Configure pytest with custom markers."""
     config.addinivalue_line("markers", "gpu: tests requiring GPU")
     config.addinivalue_line("markers", "slow: slow running tests")

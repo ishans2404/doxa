@@ -162,7 +162,7 @@ class Tensor:
         return np.asarray(self._data)
     
 # Convenience functions
-def zeroes(shape: Tuple[int, ...], dtype=None, device='auto') -> 'Tensor':
+def zeros(shape: Tuple[int, ...], dtype=None, device='auto') -> 'Tensor':
     """Create a tensor filled with zeros."""
     return Tensor(np.zeros(shape=shape, dtype=dtype), device=device)
 

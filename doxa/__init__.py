@@ -14,7 +14,6 @@ __author__ = "Ishan Singh"
 # Core imports
 from .core.tensor import Tensor
 from .backend.device_manager import DeviceManager
-from .core import utils
 from .utils import metrics
 
 # Key Classes available at the package level

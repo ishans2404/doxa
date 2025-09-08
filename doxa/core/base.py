@@ -73,10 +73,9 @@ class Regressor(Algorithm):
 
     def score(self, X, y):
         """Return the coefficient of determination R^2 of the prediction."""
-        from ..utils.metrics import r2_score
+        from doxa import metrics
         y_pred = self.predict(X)
-        return r2_score(y, y_pred)
-    
+        return metrics.r2_score(y, y_pred)
 
 
 class Classifier(Algorithm):
@@ -84,9 +83,9 @@ class Classifier(Algorithm):
 
     def score(self,  X, y):
         """Return the mean accuracy on the given test data and labels."""
-        from ..utils.metrics import accuracy_score
+        from doxa import metrics
         y_pred = self.predict(X)
-        return accuracy_score(y, y_pred)
+        return metrics.accuracy(y, y_pred)
 
 
 class Clusterer(Algorithm):

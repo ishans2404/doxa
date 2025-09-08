@@ -199,10 +199,11 @@ class LinearRegression(Regressor):
                 preds = self._predict(X).data
                 y_true = y.data if isinstance(y, Tensor) else np.asarray(y)
                 results = {
-                    "MSE": metrics.mse_loss(y_true=y_true, y_pred=preds),
-                    "MAE": metrics.mae_loss(y_true=y_true, y_pred=preds),
+                    "MSE": metrics.mse(y_true=y_true, y_pred=preds),
+                    "MAE": metrics.mae(y_true=y_true, y_pred=preds),
                     "R2 Score": metrics.r2_score(y_true=y_true, y_pred=preds),
-                    "Accuracy": metrics.accuracy_score(y_true=y_true, y_pred=preds)
+                    "Accuracy": metrics.accuracy(y_true=y_true, y_pred=preds),
+                    "RMSE": metrics.rmse(y_true=y_true, y_pred=preds)
                 }
             except Exception as e:
                 results = {
@@ -295,11 +296,13 @@ class LinearRegression(Regressor):
         if metric == "r2":
             return metrics.r2_score(y_true, preds)
         elif metric == "mse":
-            return metrics.mse_loss(y_true, preds)
+            return metrics.mse(y_true, preds)
         elif metric == "mae":
-            return metrics.mae_loss(y_true, preds)
+            return metrics.mae(y_true, preds)
         elif metric == "rmse":
-            return np.sqrt(metrics.mse_loss(y_true, preds))
+            return metrics.rmse(y_true, preds)
+        elif metric == "acc" or metric == "accuracy":
+            return metrics.accuracy(y_true, preds)
         else:
             raise ValueError(f"Unknown metric '{metric}'. Available: r2, mse, mae, rmse")
         

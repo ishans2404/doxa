@@ -127,6 +127,18 @@ class Tensor:
         
         return Tensor(result_data, device=self._device)
     
+    def __sub__(self, other):
+        """Element wise subtraction."""
+        if isinstance(other, Tensor):
+            # Ensure both tensors on same device
+            if self._device != other._device:
+                other = other.to_cpu() if other._device == 'gpu' else other.to_gpu()
+            result_data = self._data - other._data
+        else:
+            result_data = self._data - other
+        
+        return Tensor(result_data, device=self._device)
+    
     def __mul__(self, other):
         """Element wise multiplication."""
         if isinstance(other, Tensor):

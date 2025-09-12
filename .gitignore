@@ -4,6 +4,7 @@ printer_content.py
 printer_struct.py
 init_tests.ps1
 .benchmarks
+docs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

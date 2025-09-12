@@ -1,5 +1,6 @@
 numpy>=1.21.0
 scipy>=1.7.0
+cupy
 matplotlib
 tabulate
 
@@ -15,3 +16,7 @@ Sphinx
 sphinx-rtd-theme 
 myst-parser 
 sphinx-autodoc-typehints
+
+build 
+setuptools 
+wheel

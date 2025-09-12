@@ -46,6 +46,9 @@ dev = [
     "flake8",
     "mypy",
     "pre-commit",
+    "build",
+    "setuptools",
+    "wheel",
 ]
 docs = [
     "sphinx>=4.0",

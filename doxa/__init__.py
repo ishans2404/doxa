@@ -15,6 +15,7 @@ __author__ = "Ishan Singh"
 from .core.tensor import Tensor, ones, randn, zeros
 from .backend.device_manager import DeviceManager
 from .utils import metrics
+from .algorithms import regression
 
 # Key Classes available at the package level
 __all__ = [
@@ -23,6 +24,7 @@ __all__ = [
     "metrics",
     "cuda_available", 
     "get_device_manager",
+    "regression",
     "__version__",
     'randn',
     'zeros',

@@ -3,8 +3,12 @@ printer_content.txt
 printer_content.py
 printer_struct.py
 init_tests.ps1
+clean-cache.ps1
 .benchmarks
 docs/
+trial.py
+trial.txt
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

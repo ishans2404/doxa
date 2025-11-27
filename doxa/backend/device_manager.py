@@ -80,22 +80,49 @@ class DeviceManager:
     def get_device_info(self) -> dict:
         """Get information about available devices."""
         info = {
-            'gpu_available' : self.gpu_available,
-            'memory_threshold' : self.memory_threshold,
+            'gpu_available': False,
+            'memory_threshold': self.memory_threshold,
+            'gpu_info': None,
+            'gpu_name': 'No GPU available',
+            'gpu_memory': (0, 0),
+            'gpu_compute_capability': (0, 0),
+            'num_gpus': 0,
+            'cuda_version': 0
         }
-
+        
         if self.gpu_available:
             try:
                 import cupy as cp
-                info['gpu_name'] = cp.cuda.Device().name.decode()
-                info['gpu_memory'] = cp.cuda.Device().mem_info
-                info['gpu_compute_capability'] = cp.cuda.Device().compute_capability
-                info['num_gpus'] = cp.cuda.runtime.getDeviceCount()
-                info['cuda_version'] = cp.cuda.runtime.runtimeGetVersion()
-            except:
-                info['gpu_info'] = 'Could not retrieve GPU details.'
+                
+                # Get device count first
+                device_count = cp.cuda.runtime.getDeviceCount()
+                if device_count == 0:
+                    info['gpu_info'] = 'No CUDA devices found'
+                    return info
+                
+                # Use device 0 (primary GPU)
+                with cp.cuda.Device(0):
+                    # Correct API calls
+                    info['gpu_available'] = True
+                    info['num_gpus'] = device_count
+                    info['cuda_version'] = cp.cuda.runtime.runtimeGetVersion()
+                    
+                    # Get device properties
+                    properties = cp.cuda.runtime.getDeviceProperties(0)
+                    info['gpu_name'] = properties['name'].decode('utf-8')
+                    info['gpu_compute_capability'] = (properties['major'], properties['minor'])
+                    
+                    # Get memory info
+                    free_mem, total_mem = cp.cuda.runtime.memGetInfo()
+                    info['gpu_memory'] = (free_mem, total_mem)
+                    
+                    info['gpu_info'] = None
+                    
+            except Exception as e:
+                info['gpu_info'] = f'Could not retrieve GPU details: {str(e)}'
         
         return info
+
         
 
 

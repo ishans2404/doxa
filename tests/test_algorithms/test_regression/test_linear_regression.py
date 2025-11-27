@@ -30,7 +30,7 @@ class TestLinearRegression:
         # Test prediction
         predictions = model.predict(X)
         assert isinstance(predictions, Tensor)
-        assert predictions.shape == (X.shape,)
+        assert predictions.shape == y.shape
 
     def test_fit_without_intercept(self, sample_data):
         """Test fitting without intercept."""

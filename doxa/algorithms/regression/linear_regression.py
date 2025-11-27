@@ -237,7 +237,6 @@ class LinearRegression(Regressor):
         """
         if not self._fitted:
             raise ValueError("Model must be fitted before visualization.")
-            return
 
         if not isinstance(X, Tensor):
             X = Tensor(X)
@@ -258,8 +257,8 @@ class LinearRegression(Regressor):
         else:
             # Residuals plot for higher dimensions
             residuals = y_data - preds
-            plt.scatter(preds, residuals, alpha=0.6)
-            plt.axhline(0, color="red", linestyle="--")
+            plt.scatter(preds, residuals, alpha=0.6, label="Residuals")
+            plt.axhline(0, color="red", linestyle="--", label="Zero Line")
             plt.xlabel("Predictions")
             plt.ylabel("Residuals")
             plt.title("Residuals Plot")
